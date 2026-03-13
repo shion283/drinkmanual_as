@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+<title>ドリンクマニュアル</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>ドリンクマニュアル</h1>
+
+
+<label>ベース</label>
+<select id="baseFilter">
+<option value="">すべて</option>
+</select>
+
+
+<label>割り材</label>
+<select id="mixerFilter">
+
+<option value="">すべて</option>
+
+<option>ソーダ</option>
+<option>コーラ</option>
+<option>ジンジャー</option>
+<option>トニック</option>
+<option>オレンジ</option>
+<option>アップル</option>
+<option>グレープフルーツ</option>
+<option>ウーロン茶</option>
+
+</select>
+
+
+<label>グラス</label>
+<select id="glassFilter">
+
+<option value="">すべて</option>
+
+<option>コリンズ</option>
+<option>8oz(ハッタン)</option>
+<option>ワイン</option>
+
+</select>
+
+
+<label>カクテル名検索</label>
+<input id="cocktailSearch" placeholder="例：カシス">
+
+
+<div id="drinkList"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
