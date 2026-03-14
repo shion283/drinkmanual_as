@@ -43,14 +43,14 @@ const cocktails = [
 {base:"麦焼酎", mixer:"ロック", name:"麦焼酎ロック"},
 {base:"麦焼酎", mixer:"ストレート", name:"麦焼酎ストレート"},
 
-{base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ"},
-{base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ☆"},
+{base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
+{base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ"},
 {base:"芋焼酎", mixer:"水", name:"芋の水割り"},
 {base:"芋焼酎", mixer:"お湯", name:"芋のお湯割り"},
 {base:"芋焼酎", mixer:"ロック", name:"芋焼酎ロック"},
 {base:"芋焼酎", mixer:"ストレート", name:"芋焼酎ストレート"},
 
-{base:"梅酒", mixer:"ソーダ", name:"梅酒ソーダ☆"},
+{base:"梅酒", mixer:"ソーダ", name:"梅酒ソーダ"},
 {base:"梅酒", mixer:"水", name:"梅酒水割り"},
 {base:"梅酒", mixer:"お湯", name:"梅酒お湯割り"},
 {base:"梅酒", mixer:"ロック", name:"梅酒ロック"},
@@ -64,11 +64,14 @@ const cocktails = [
 {base:"自家製レモンスカッシュ", mixer:"水", name:"レモネード"},
 
 {base:"クラフトジンジャーエール", mixer:"ソーダ", name:"クラフトジンジャーエール"},
-{base:"クラフトジンジャーエール", mixer:"お湯", name:"ホットジンジャー"}
+{base:"クラフトジンジャーエール", mixer:"お湯", name:"ホットジンジャー"},
+
+{base:"ビール", mixer:"そのまま", name:"ビール"},
+{base:"ノンアルコールビール", mixer:"そのまま", name:"ノンアルコールビール"},
+{base:"ワイン", mixer:"そのまま", name:"ワイン"}
 
 ]
 
-/* フィルターイベント */
 
 document.getElementById("baseFilter").addEventListener("change",displayDrinks)
 document.getElementById("mixerFilter").addEventListener("change",displayDrinks)
@@ -80,7 +83,6 @@ createBaseList()
 displayDrinks()
 
 
-/* ベース一覧生成 */
 
 function createBaseList(){
 
@@ -100,7 +102,6 @@ select.appendChild(option)
 }
 
 
-/* 表示 */
 
 function displayDrinks(){
 
@@ -112,8 +113,9 @@ let search = document.getElementById("cocktailSearch").value.toLowerCase()
 let html = ""
 
 let sortedCocktails = [...cocktails].sort((a,b)=>{
-    return (b.name.includes("☆") ? 1 : 0) - (a.name.includes("☆") ? 1 : 0)
+return (b.name.includes("☆")?1:0)-(a.name.includes("☆")?1:0)
 })
+
 
 for(let c of sortedCocktails){
 
@@ -124,6 +126,19 @@ if(search && !c.name.toLowerCase().includes(search)) continue
 
 let cardGlass = "コリンズ"
 let handle = ""
+
+
+if(c.base === "ビール"){
+cardGlass = "8oz"
+}
+
+if(c.base === "ワイン"){
+cardGlass = "ワイングラス"
+}
+
+if(c.base === "ノンアルコールビール"){
+cardGlass = "コリンズ"
+}
 
 if(c.mixer === "ロック" || c.mixer === "ストレート"){
 cardGlass = "8oz"
@@ -137,10 +152,17 @@ handle = "（取っ手付き）"
 if(glass && glass !== cardGlass) continue
 
 
+let recipeHTML = ""
+
+if(c.mixer !== "そのまま"){
+recipeHTML = `<p>${c.base} + ${c.mixer}</p>`
+}
+
+
 html += `
 <div class="card">
 <h3>${c.name}</h3>
-<p>${c.base} + ${c.mixer}</p>
+${recipeHTML}
 <p>グラス：${cardGlass}${handle}</p>
 </div>
 `
