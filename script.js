@@ -150,50 +150,48 @@ let html = ""
 
 for(let baseName in drinks){
 
-if(base && base !== baseName) continue
+    if(base && base !== baseName) continue
 
-for(let m of mixers){
+    for(let m of mixers){
 
-if(mixer && mixer !== m) continue
+        if(mixer && mixer !== m) continue
 
-if (allowedMixers[baseName] && !allowedMixers[baseName].includes(m)) continue
+        if (allowedMixers[baseName] && !allowedMixers[baseName].includes(m)) continue
 
-let key = baseName + "_" + m
-let cocktailName = cocktailNames[key] || (baseName + m)
+        let key = baseName + "_" + m
+        let cocktailName = cocktailNames[key] || (baseName + m)
 
-if(search && !cocktailName.toLowerCase().includes(search)) continue
-
-
-/* グラス自動判定 */
-
-let cardGlass = "コリンズ"
-let handle = ""
-
-if(m === "ロック" || m === "ストレート"){
-cardGlass = "8oz"
-}
-
-if(m === "お湯"){
-cardGlass = "8oz"
-handle = "（取っ手付き）"
-}
+        if(search && !cocktailName.toLowerCase().includes(search)) continue
 
 
-/* グラスフィルター */
+        /* グラス判定 */
 
-if(glass && glass !== cardGlass) continue
+        let cardGlass = "コリンズ"
+        let handle = ""
+
+        if(m === "ロック" || m === "ストレート"){
+            cardGlass = "8oz"
+        }
+
+        if(m === "お湯"){
+            cardGlass = "8oz"
+            handle = "（取っ手付き）"
+        }
 
 
-html += `
-<div class="card">
-<h3>${cocktailName}</h3>
-<p>${baseName} + ${m}</p>
-<p>グラス：${cardGlass}${handle}</p>
-</div>
-`
+        /* グラスフィルター */
 
-}
+        if(glass !== "" && glass !== cardGlass) continue
 
+
+        html += `
+        <div class="card">
+          <h3>${cocktailName}</h3>
+          <p>${baseName} + ${m}</p>
+          <p>グラス：${cardGlass}${handle}</p>
+        </div>
+        `
+    }
 }
 
 document.getElementById("drinkList").innerHTML = html
