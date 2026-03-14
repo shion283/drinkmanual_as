@@ -170,13 +170,14 @@ if(c.base === "ノンアルコールビール"){
 cardGlass = "コリンズ"
 }
 
-if(c.base === "スパークリングワイン(乾杯酒)"{
+if(c.base === "スパークリングワイン(乾杯酒)"){
 cardGlass = "フルート"
 }
 
 if(c.base === "日本酒(菊正宗)"){
     if(c.mixer === "温め"){
-        cardGlass = "8oz(取っ手付き)"
+        cardGlass = "8oz"
+        handle = "（取っ手付き）"
     }else{
         cardGlass = "お猪口(おちょこ)"
     }
