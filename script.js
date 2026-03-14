@@ -19,24 +19,24 @@ const mixers = [
 ]
 
 
-
 const allowedMixers = {
-    "モナン パッションフルーツ": ["ソーダ"],
-    "モナン グリーンアップル": ["ソーダ"],
-    "カシス": ["オレンジ","ソーダ","グレープフルーツ","ウーロン茶","ジンジャー","コーラ","アップル"],
-    "ピーチ": ["ソーダ","オレンジ","アップル", "ウーロン茶","グレープフルーツ"],
-    "マリブ": ["コーラ","オレンジ"],
-    "ジン": ["トニック","ソーダ","ジンジャー","ロック","ストレート"],
-    "ウィスキー": ["ソーダ","コーラ","ジンジャー","水","お湯","ロック","ストレート"],
-    "ラム": ["コーラ","ソーダ","ジンジャー","ロック","ストレート"],
-    "アマレット": ["ジンジャー","ミルク","グレープフルーツ","オレンジ"],
-    "麦焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
-    "芋焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
-    "梅酒": ["ソーダ","水","お湯","ロック","ストレート"],
-    "カルピス":["水","ソーダ"],
-    "自家製レモンスカッシュ":["ソーダ","お湯","水"],
-    "クラフトジンジャーエール":["ソーダ","お湯"]
+"モナン パッションフルーツ": ["ソーダ"],
+"モナン グリーンアップル": ["ソーダ"],
+"カシス": ["オレンジ","ソーダ","グレープフルーツ","ウーロン茶","ジンジャー","コーラ","アップル"],
+"ピーチ": ["ソーダ","オレンジ","アップル","ウーロン茶","グレープフルーツ"],
+"マリブ": ["コーラ","オレンジ"],
+"ジン": ["トニック","ソーダ","ジンジャー","ロック","ストレート"],
+"ウィスキー": ["ソーダ","コーラ","ジンジャー","水","お湯","ロック","ストレート"],
+"ラム": ["コーラ","ソーダ","ジンジャー","ロック","ストレート"],
+"アマレット": ["ジンジャー","ミルク","グレープフルーツ","オレンジ"],
+"麦焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
+"芋焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
+"梅酒": ["ソーダ","水","お湯","ロック","ストレート"],
+"カルピス":["水","ソーダ"],
+"自家製レモンスカッシュ":["ソーダ","お湯","水"],
+"クラフトジンジャーエール":["ソーダ","お湯"]
 }
+
 
 /* 正式カクテル名 */
 
@@ -69,8 +69,6 @@ const cocktailNames = {
 
 "アマレット_ジンジャー":"アマレットジンジャー☆",
 
-/* モナン */
-
 "モナン パッションフルーツ_ソーダ":"パッションフルーツソーダ☆",
 "モナン グリーンアップル_ソーダ":"グリーンアップルソーダ☆",
 
@@ -78,16 +76,20 @@ const cocktailNames = {
 "麦焼酎_ソーダ":"麦ソーダ",
 "麦焼酎_水":"麦の水割り",
 "麦焼酎_お湯":"麦のお湯割り",
+
 "芋焼酎_ウーロン茶":"ウーロンハイ☆",
 "芋焼酎_ソーダ":"芋ソーダ",
 "芋焼酎_水":"芋の水割り",
 "芋焼酎_お湯":"芋のお湯割り",
+
 "カルピス_水":"カルピスウォーター",
 "カルピス_ソーダ":"カルピスソーダ",
+
 "自家製レモンスカッシュ_ソーダ":"自家製レモンスカッシュ",
 "自家製レモンスカッシュ_お湯":"ホットレモネード",
-"自家製レモンスカッシュ＿水":"レモネード",
-"クラフトジンジャーエール＿ソーダ":"クラフトジンジャーエール",
+"自家製レモンスカッシュ_水":"レモネード",
+
+"クラフトジンジャーエール_ソーダ":"クラフトジンジャーエール",
 "クラフトジンジャーエール_お湯":"ホットジンジャー"
 
 }
@@ -137,46 +139,59 @@ select.appendChild(option)
 
 function displayDrinks(){
 
-let base =
-document.getElementById("baseFilter").value
-
-let mixer =
-document.getElementById("mixerFilter").value
-
-let glass =
-document.getElementById("glassFilter").value
-
-let search =
-document.getElementById("cocktailSearch").value.toLowerCase()
+let base = document.getElementById("baseFilter").value
+let mixer = document.getElementById("mixerFilter").value
+let glass = document.getElementById("glassFilter").value
+let search = document.getElementById("cocktailSearch").value.toLowerCase()
 
 let html = ""
 
-
-// 既存のforループ
 for(let baseName in drinks){
 
-    if(base && base !== baseName) continue
+if(base && base !== baseName) continue
 
-    for(let m of mixers){
+for(let m of mixers){
 
-        if(mixer && mixer !== m) continue
+if(mixer && mixer !== m) continue
 
-        // ★ ベースごとの割り材制限
-        if (allowedMixers[baseName] && !allowedMixers[baseName].includes(m)) continue
+if (allowedMixers[baseName] && !allowedMixers[baseName].includes(m)) continue
 
-        let key = baseName + "_" + m
-        let cocktailName = cocktailNames[key] || (baseName + m)
+let key = baseName + "_" + m
+let cocktailName = cocktailNames[key] || (baseName + m)
 
-        if(search && !cocktailName.toLowerCase().includes(search)) continue
+if(search && !cocktailName.toLowerCase().includes(search)) continue
 
-        html += `
-        <div class="card">
-          <h3>${cocktailName}</h3>
-          <p>${baseName} + ${m}</p>
-          <p>グラス：${glass || "コリンズ"}</p>
-        </div>
-        `
-    }
+
+/* グラス自動判定 */
+
+let cardGlass = "コリンズ"
+let handle = ""
+
+if(m === "ロック" || m === "ストレート"){
+cardGlass = "8oz"
+}
+
+if(m === "お湯"){
+cardGlass = "8oz"
+handle = "（取っ手付き）"
+}
+
+
+/* グラスフィルター */
+
+if(glass && glass !== cardGlass) continue
+
+
+html += `
+<div class="card">
+<h3>${cocktailName}</h3>
+<p>${baseName} + ${m}</p>
+<p>グラス：${cardGlass}${handle}</p>
+</div>
+`
+
+}
+
 }
 
 document.getElementById("drinkList").innerHTML = html
