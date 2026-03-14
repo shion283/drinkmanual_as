@@ -43,14 +43,14 @@ const cocktails = [
 {base:"麦焼酎", mixer:"ロック", name:"麦焼酎ロック"},
 {base:"麦焼酎", mixer:"ストレート", name:"麦焼酎ストレート"},
 
-{base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
-{base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ"},
+{base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ"},
+{base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ☆"},
 {base:"芋焼酎", mixer:"水", name:"芋の水割り"},
 {base:"芋焼酎", mixer:"お湯", name:"芋のお湯割り"},
 {base:"芋焼酎", mixer:"ロック", name:"芋焼酎ロック"},
 {base:"芋焼酎", mixer:"ストレート", name:"芋焼酎ストレート"},
 
-{base:"梅酒", mixer:"ソーダ", name:"梅酒ソーダ"},
+{base:"梅酒", mixer:"ソーダ", name:"梅酒ソーダ☆"},
 {base:"梅酒", mixer:"水", name:"梅酒水割り"},
 {base:"梅酒", mixer:"お湯", name:"梅酒お湯割り"},
 {base:"梅酒", mixer:"ロック", name:"梅酒ロック"},
