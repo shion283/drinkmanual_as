@@ -67,8 +67,24 @@ const cocktails = [
 {base:"クラフトジンジャーエール", mixer:"お湯", name:"ホットジンジャー"},
 
 {base:"ビール", mixer:"そのまま", name:"ビール"},
+{base:"ビール", mixer:"ジンジャー", name:"シャンディガフ"},
+{base:"ビール", mixer:"オレンジ", name:"ビターオレンジ"},
+{base:"ビール", mixer:"ソーダ", name:"ビアスプリッツァー"},
+{base:"ビール", mixer:"自家製レモンスカッシュ ＋ ソーダ", name:"パナシェ"},
+
+
 {base:"ノンアルコールビール", mixer:"そのまま", name:"ノンアルコールビール"},
-{base:"ワイン", mixer:"そのまま", name:"ワイン"}
+
+{base:"白ワイン", mixer:"そのまま", name:"ワイン"},
+{base:"白ワイン", mixer:"ジンジャー", name:"オペレーター"},
+{base:"白ワイン", mixer:"ソーダ", name:"スプリッツァー"},
+
+{base:"赤ワイン", mixer:"そのまま", name:"ワイン"},
+{base:"赤ワイン", mixer:"ジンジャー", name:"キティ"},
+{base:"赤ワイン", mixer:"コーラ", name:"カリモーチョ"},
+{base:"赤ワイン", mixer:"オレンジ ＋ グレナデン", name:"ワインクーラー"},
+{base:"赤ワイン", mixer:"カシス10mL", name:"カーディナル"}
+
 
 ]
 
@@ -132,7 +148,7 @@ if(c.base === "ビール"){
 cardGlass = "8oz"
 }
 
-if(c.base === "ワイン"){
+if(c.base === "白ワイン" || c.base === "赤ワイン"){
 cardGlass = "ワイングラス"
 }
 
