@@ -1,117 +1,74 @@
-let drinks = {}
+const cocktails = [
 
-const mixers = [
+{base:"ウィスキー", mixer:"ソーダ", name:"ハイボール☆"},
+{base:"ウィスキー", mixer:"コーラ", name:"コークハイ"},
+{base:"ウィスキー", mixer:"ジンジャー", name:"ジンジャーハイ☆"},
+{base:"ウィスキー", mixer:"水", name:"ウィスキー水割り"},
+{base:"ウィスキー", mixer:"お湯", name:"ウィスキーお湯割り"},
+{base:"ウィスキー", mixer:"ロック", name:"ウィスキーロック"},
+{base:"ウィスキー", mixer:"ストレート", name:"ウィスキーストレート"},
 
-"ソーダ",
-"コーラ",
-"ジンジャー",
-"トニック",
-"オレンジ",
-"アップル",
-"グレープフルーツ",
-"ウーロン茶",
-"水",
-"お湯",
-"ミルク",
-"ロック",
-"ストレート"
+{base:"ジン", mixer:"トニック", name:"ジントニック☆"},
+{base:"ジン", mixer:"ソーダ", name:"ジンソーダ☆"},
+{base:"ジン", mixer:"ジンジャー", name:"ジンバック☆"},
+{base:"ジン", mixer:"ロック", name:"ジンロック"},
+{base:"ジン", mixer:"ストレート", name:"ジンストレート"},
+
+{base:"ラム", mixer:"コーラ", name:"ラムコーク☆"},
+{base:"ラム", mixer:"ソーダ", name:"ラムソーダ☆"},
+{base:"ラム", mixer:"ジンジャー", name:"ラムバック"},
+{base:"ラム", mixer:"ロック", name:"ラムロック"},
+{base:"ラム", mixer:"ストレート", name:"ラムストレート"},
+
+{base:"カシス", mixer:"オレンジ", name:"カシスオレンジ(カシオレ)☆"},
+{base:"カシス", mixer:"ソーダ", name:"カシスソーダ"},
+{base:"カシス", mixer:"グレープフルーツ", name:"カシスグレープフルーツ"},
+{base:"カシス", mixer:"ウーロン茶", name:"カシスウーロン☆"},
+
+{base:"ピーチ", mixer:"オレンジ", name:"ファジーネーブル☆"},
+{base:"ピーチ", mixer:"ウーロン茶", name:"ピーチウーロン☆"},
+
+{base:"マリブ", mixer:"コーラ", name:"マリブコーク☆"},
+{base:"マリブ", mixer:"オレンジ", name:"マリブオレンジ"},
+
+{base:"アマレット", mixer:"ジンジャー", name:"アマレットジンジャー☆"},
+
+{base:"モナン パッションフルーツ", mixer:"ソーダ", name:"パッションフルーツソーダ☆"},
+{base:"モナン グリーンアップル", mixer:"ソーダ", name:"グリーンアップルソーダ☆"},
+
+{base:"麦焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
+{base:"麦焼酎", mixer:"ソーダ", name:"麦ソーダ"},
+{base:"麦焼酎", mixer:"水", name:"麦の水割り"},
+{base:"麦焼酎", mixer:"お湯", name:"麦のお湯割り"},
+{base:"麦焼酎", mixer:"ロック", name:"麦焼酎ロック"},
+{base:"麦焼酎", mixer:"ストレート", name:"麦焼酎ストレート"},
+
+{base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
+{base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ"},
+{base:"芋焼酎", mixer:"水", name:"芋の水割り"},
+{base:"芋焼酎", mixer:"お湯", name:"芋のお湯割り"},
+{base:"芋焼酎", mixer:"ロック", name:"芋焼酎ロック"},
+{base:"芋焼酎", mixer:"ストレート", name:"芋焼酎ストレート"},
+
+{base:"梅酒", mixer:"ソーダ", name:"梅酒ソーダ"},
+{base:"梅酒", mixer:"水", name:"梅酒水割り"},
+{base:"梅酒", mixer:"お湯", name:"梅酒お湯割り"},
+{base:"梅酒", mixer:"ロック", name:"梅酒ロック"},
+{base:"梅酒", mixer:"ストレート", name:"梅酒ストレート"},
+
+{base:"カルピス", mixer:"水", name:"カルピスウォーター"},
+{base:"カルピス", mixer:"ソーダ", name:"カルピスソーダ"},
+
+{base:"自家製レモンスカッシュ", mixer:"ソーダ", name:"自家製レモンスカッシュ"},
+{base:"自家製レモンスカッシュ", mixer:"お湯", name:"ホットレモネード"},
+{base:"自家製レモンスカッシュ", mixer:"水", name:"レモネード"},
+
+{base:"クラフトジンジャーエール", mixer:"ソーダ", name:"クラフトジンジャーエール"},
+{base:"クラフトジンジャーエール", mixer:"お湯", name:"ホットジンジャー"}
 
 ]
 
-
-const allowedMixers = {
-"モナン パッションフルーツ": ["ソーダ"],
-"モナン グリーンアップル": ["ソーダ"],
-"カシス": ["オレンジ","ソーダ","グレープフルーツ","ウーロン茶","ジンジャー","コーラ","アップル"],
-"ピーチ": ["ソーダ","オレンジ","アップル","ウーロン茶","グレープフルーツ"],
-"マリブ": ["コーラ","オレンジ"],
-"ジン": ["トニック","ソーダ","ジンジャー","ロック","ストレート"],
-"ウィスキー": ["ソーダ","コーラ","ジンジャー","水","お湯","ロック","ストレート"],
-"ラム": ["コーラ","ソーダ","ジンジャー","ロック","ストレート"],
-"アマレット": ["ジンジャー","ミルク","グレープフルーツ","オレンジ"],
-"麦焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
-"芋焼酎": ["ウーロン茶","ソーダ","水","お湯","ロック","ストレート"],
-"梅酒": ["ソーダ","水","お湯","ロック","ストレート"],
-"カルピス":["水","ソーダ"],
-"自家製レモンスカッシュ":["ソーダ","お湯","水"],
-"クラフトジンジャーエール":["ソーダ","お湯"]
-}
-
-
-/* 正式カクテル名 */
-
-const cocktailNames = {
-
-"ウィスキー_ソーダ":"ハイボール☆",
-"ウィスキー_コーラ":"コークハイ",
-"ウィスキー_ジンジャー":"ジンジャーハイ☆",
-"ウィスキー_水":"ウィスキー水割り",
-"ウィスキー_お湯":"ウィスキーお湯割り",
-
-"ジン_トニック":"ジントニック☆",
-"ジン_ソーダ":"ジンソーダ☆",
-"ジン_ジンジャー":"ジンバック☆",
-
-"ラム_コーラ":"ラムコーク☆",
-"ラム_ソーダ":"ラムソーダ☆",
-"ラム_ジンジャー":"ラムバック",
-
-"カシス_オレンジ":"カシスオレンジ(カシオレ)☆",
-"カシス_ソーダ":"カシスソーダ",
-"カシス_グレープフルーツ":"カシスグレープフルーツ",
-"カシス_ウーロン茶":"カシスウーロン☆",
-
-"ピーチ_オレンジ":"ファジーネーブル☆",
-"ピーチ_ウーロン茶":"ピーチウーロン☆",
-
-"マリブ_コーラ":"マリブコーク☆",
-"マリブ_オレンジ":"マリブオレンジ",
-
-"アマレット_ジンジャー":"アマレットジンジャー☆",
-
-"モナン パッションフルーツ_ソーダ":"パッションフルーツソーダ☆",
-"モナン グリーンアップル_ソーダ":"グリーンアップルソーダ☆",
-
-"麦焼酎_ウーロン茶":"ウーロンハイ☆",
-"麦焼酎_ソーダ":"麦ソーダ",
-"麦焼酎_水":"麦の水割り",
-"麦焼酎_お湯":"麦のお湯割り",
-
-"芋焼酎_ウーロン茶":"ウーロンハイ☆",
-"芋焼酎_ソーダ":"芋ソーダ",
-"芋焼酎_水":"芋の水割り",
-"芋焼酎_お湯":"芋のお湯割り",
-
-"梅酒_水":"梅酒の水割り",
-
-"カルピス_水":"カルピスウォーター",
-"カルピス_ソーダ":"カルピスソーダ",
-
-"自家製レモンスカッシュ_ソーダ":"自家製レモンスカッシュ",
-"自家製レモンスカッシュ_お湯":"ホットレモネード",
-"自家製レモンスカッシュ_水":"レモネード",
-
-"クラフトジンジャーエール_ソーダ":"クラフトジンジャーエール",
-"クラフトジンジャーエール_お湯":"ホットジンジャー"
-
-}
-
-
-
-fetch("drinks.json")
-
-.then(res => res.json())
-
-.then(data => {
-
-drinks = data
-
-createBaseList()
-
-displayDrinks()
-
-})
-
+/* フィルターイベント */
 
 document.getElementById("baseFilter").addEventListener("change",displayDrinks)
 document.getElementById("mixerFilter").addEventListener("change",displayDrinks)
@@ -119,15 +76,20 @@ document.getElementById("glassFilter").addEventListener("change",displayDrinks)
 document.getElementById("cocktailSearch").addEventListener("input",displayDrinks)
 
 
+createBaseList()
+displayDrinks()
+
+
+/* ベース一覧生成 */
 
 function createBaseList(){
 
+let bases = [...new Set(cocktails.map(c => c.base))]
 let select = document.getElementById("baseFilter")
 
-for(let base in drinks){
+for(let base of bases){
 
 let option = document.createElement("option")
-
 option.value = base
 option.textContent = base
 
@@ -138,6 +100,7 @@ select.appendChild(option)
 }
 
 
+/* 表示 */
 
 function displayDrinks(){
 
@@ -148,50 +111,36 @@ let search = document.getElementById("cocktailSearch").value.toLowerCase()
 
 let html = ""
 
-for(let baseName in drinks){
+for(let c of cocktails){
 
-    if(base && base !== baseName) continue
-
-    for(let m of mixers){
-
-        if(mixer && mixer !== m) continue
-
-        if (allowedMixers[baseName] && !allowedMixers[baseName].includes(m)) continue
-
-        let key = baseName + "_" + m
-        let cocktailName = cocktailNames[key] || (baseName + m)
-
-        if(search && !cocktailName.toLowerCase().includes(search)) continue
+if(base && base !== c.base) continue
+if(mixer && mixer !== c.mixer) continue
+if(search && !c.name.toLowerCase().includes(search)) continue
 
 
-        /* グラス判定 */
+let cardGlass = "コリンズ"
+let handle = ""
 
-        let cardGlass = "コリンズ"
-        let handle = ""
+if(c.mixer === "ロック" || c.mixer === "ストレート"){
+cardGlass = "8oz"
+}
 
-        if(m === "ロック" || m === "ストレート"){
-            cardGlass = "8oz"
-        }
+if(c.mixer === "お湯"){
+cardGlass = "8oz"
+handle = "（取っ手付き）"
+}
 
-        if(m === "お湯"){
-            cardGlass = "8oz"
-            handle = "（取っ手付き）"
-        }
-
-
-        /* グラスフィルター */
-
-        if(glass !== "" && glass !== cardGlass) continue
+if(glass && glass !== cardGlass) continue
 
 
-        html += `
-        <div class="card">
-          <h3>${cocktailName}</h3>
-          <p>${baseName} + ${m}</p>
-          <p>グラス：${cardGlass}${handle}</p>
-        </div>
-        `
-    }
+html += `
+<div class="card">
+<h3>${c.name}</h3>
+<p>${c.base} + ${c.mixer}</p>
+<p>グラス：${cardGlass}${handle}</p>
+</div>
+`
+
 }
 
 document.getElementById("drinkList").innerHTML = html
