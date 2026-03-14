@@ -111,7 +111,11 @@ let search = document.getElementById("cocktailSearch").value.toLowerCase()
 
 let html = ""
 
-for(let c of cocktails){
+let sortedCocktails = [...cocktails].sort((a,b)=>{
+    return (b.name.includes("☆") ? 1 : 0) - (a.name.includes("☆") ? 1 : 0)
+})
+
+for(let c of sortedCocktails){
 
 if(base && base !== c.base) continue
 if(mixer && mixer !== c.mixer) continue
