@@ -112,7 +112,7 @@ displayDrinks()
 
 function createBaseList(){
 
-let bases = [...new Set(cocktails.map(c => c.base))].sort()
+let bases = [...new Set(cocktails.map(c => c.base))]
 let select = document.getElementById("baseFilter")
 
 for(let base of bases){
