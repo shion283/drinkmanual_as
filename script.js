@@ -38,6 +38,7 @@ const cocktails = [
 
 {base:"麦焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
 {base:"麦焼酎", mixer:"ソーダ", name:"麦ソーダ"},
+{base:"麦焼酎", mixer:"ソーダ ＋ レモン果汁(好みでレモンスカッシュ原液追加)", name:"レモンサワー☆"},
 {base:"麦焼酎", mixer:"水", name:"麦の水割り"},
 {base:"麦焼酎", mixer:"お湯", name:"麦のお湯割り"},
 {base:"麦焼酎", mixer:"ロック", name:"麦焼酎ロック"},
@@ -45,6 +46,7 @@ const cocktails = [
 
 {base:"芋焼酎", mixer:"ウーロン茶", name:"ウーロンハイ☆"},
 {base:"芋焼酎", mixer:"ソーダ", name:"芋ソーダ"},
+{base:"芋焼酎", mixer:"ソーダ ＋ レモン果汁(好みでレモンスカッシュ原液追加)", name:"レモンサワー"},
 {base:"芋焼酎", mixer:"水", name:"芋の水割り"},
 {base:"芋焼酎", mixer:"お湯", name:"芋のお湯割り"},
 {base:"芋焼酎", mixer:"ロック", name:"芋焼酎ロック"},
