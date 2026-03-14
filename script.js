@@ -145,7 +145,11 @@ let handle = ""
 
 
 if(c.base === "ビール"){
-cardGlass = "8oz"
+    if(c.mixer === "そのまま"){
+        cardGlass = "8oz"
+    }else{
+        cardGlass = "コリンズ"
+    }
 }
 
 if(c.base === "白ワイン" || c.base === "赤ワイン"){
