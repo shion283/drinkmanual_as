@@ -83,8 +83,18 @@ const cocktails = [
 {base:"赤ワイン", mixer:"ジンジャー", name:"キティ"},
 {base:"赤ワイン", mixer:"コーラ", name:"カリモーチョ"},
 {base:"赤ワイン", mixer:"オレンジ ＋ グレナデン", name:"ワインクーラー"},
-{base:"赤ワイン", mixer:"カシス10mL", name:"カーディナル"}
+{base:"赤ワイン", mixer:"カシス10mL", name:"カーディナル"},
 
+{base:"スパークリングワイン(乾杯酒)", mixer:"そのまま", name:"スパークリングワイン(乾杯酒)"},
+{base:"スパークリングワイン(乾杯酒)", mixer:"オレンジ", name:"ミモザ"},
+
+{base:"日本酒(菊正宗)", mixer:"そのまま", name:"日本酒(菊正宗)の冷酒"},
+{base:"日本酒(菊正宗)", mixer:"温め", name:"日本酒(菊正宗)の熱燗"},
+{base:"日本酒(菊正宗)", mixer:"常温", name:"日本酒(菊正宗)"},
+
+{base:"獺祭(だっさい)", mixer:"そのまま", name:"獺祭(だっさい)"},
+
+{base:"澪(みお)", mixer:"そのまま", name:"澪(みお)"},
 
 ]
 
@@ -158,6 +168,26 @@ cardGlass = "ワイングラス"
 
 if(c.base === "ノンアルコールビール"){
 cardGlass = "コリンズ"
+}
+
+if(c.base === "スパークリングワイン(乾杯酒)"{
+cardGlass = "フルート"
+}
+
+if(c.base === "日本酒(菊正宗)"){
+    if(c.mixer === "温め"){
+        cardGlass = "8oz(取っ手付き)"
+    }else{
+        cardGlass = "お猪口(おちょこ)"
+    }
+}
+
+if(c.base === "獺祭(だっさい)"){
+cardGlass = "ブラン"
+}
+
+if(c.base === "澪(みお)"){
+cardGlass = "チビフル"
 }
 
 if(c.mixer === "ロック" || c.mixer === "ストレート"){
